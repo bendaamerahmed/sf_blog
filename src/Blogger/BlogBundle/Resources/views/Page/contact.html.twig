@@ -1,0 +1,30 @@
+{% extends 'BlogBundle::layout.html.twig' %}
+
+{% block title %}Contact{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Contact DevBlog</h1>
+    </header>
+    {% for message in app.flashes('blogger-notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+    <p>Want to contact DevBlog?</p>
+
+    <form action="{{ path('BloggerBlogBundle_contact') }}" method="post" class="blogger">
+        {{ form_errors(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.body) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Submit" class="btn-success" />
+    </form>
+{% endblock %}

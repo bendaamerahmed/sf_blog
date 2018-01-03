@@ -1,0 +1,12 @@
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+<form action="{{ path('BloggerBlogBundle_comment_create', { 'blog_id' : comment.blog.id } ) }}" method="post"  class="blogger">
+    {{ form_widget(form) }}
+    <p>
+        <input type="submit" value="Submit" class="btn btn-success">
+    </p>
+</form>
+{% else %}
+    <p>creer un compte to post a comment<a href="{{ path('fos_user_registration_register') }}"> Create account</a>
+        Or <a href="{{ path('fos_user_security_login') }}"> Login </a> if You have already an account
+    </p>
+{% endif %}
